@@ -30,13 +30,25 @@ public class Balls extends PApplet{
 
     @Override
     public void draw() {
+        for(Balls ball : four_Balls){
+            ball.xpos = ball.xpos + ball.speed;
+            drawCircle(ball);
+        }
 
+    }
 
+    private void drawCircle(Balls ball) {
+        ellipse(ball.xpos, ball.ypos, DIAMETER, DIAMETER);
     }
 
 
     public static void main(String[] args) {
         PApplet.main("Balls",args);
+        for(int i=0;i<4;i++){
+            Balls ball = new Balls(i+1);
+            ball.ypos = HEIGHT * (i + 1) / 5;
+            four_Balls[i] = ball;
+        }
 
     }
 
